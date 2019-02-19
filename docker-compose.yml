@@ -1,0 +1,25 @@
+version: "3.5"
+services:
+  mysql:
+    image: mysql:8.0
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    restart: on-failure
+    user: ${LOCAL_USER}
+
+  nginx:
+    image: nginx:1.15.3-alpine
+    restart: on-failure
+    depends_on:
+      - php
+
+  adminer:
+    image: adminer
+    restart: on-failure
