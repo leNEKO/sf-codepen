@@ -52,9 +52,13 @@ class MyController
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('start', 0)
+        $resolver->setDefaults([
+            'start' => 0,
+            'hello' => null,
+        ]);
+
+        $resolver
             ->setAllowedTypes('start', 'int')
-            ->setDefault('hello', null)
             ->setAllowedTypes('hello', ['null', 'int', 'string']);
     }
 
