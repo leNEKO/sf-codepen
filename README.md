@@ -1,6 +1,6 @@
 # Symfony Codepen
 
-My Symfony 4 App codepen in docker container
+My Symfony 4 App codepen in a docker container
 
 1. copy .env `$ cp .env.dist .env`
 2. edit .env parameters
