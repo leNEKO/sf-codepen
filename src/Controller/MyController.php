@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -6,6 +8,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+// a solution to validate
 class MyController
 {
     /**
@@ -27,6 +30,8 @@ class MyController
         return (new OptionsResolver())
             ->setDefault('start', 0)
             ->setAllowedTypes('start', 'int')
+            ->setDefault('hello', null)
+            ->setAllowedTypes('hello', ['null', 'int', 'string'])
             ->resolve($normalized);
     }
 
