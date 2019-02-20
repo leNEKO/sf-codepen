@@ -23,14 +23,14 @@ class MyController
 
     private function resolve(Request $request): array
     {
-        $normalized = $this->normalizeIntegers(
-            $request->query->all()
-        );
-
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
-        return $resolver->resolve($normalized);
+        return $resolver->resolve(
+            $this->normalizeIntegers(
+                $request->query->all()
+            )
+        );
     }
 
     private function configureOptions(OptionsResolver $resolver): void
