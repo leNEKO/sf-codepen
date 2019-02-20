@@ -21,21 +21,27 @@ class MyController
         return new JsonResponse($data);
     }
 
-    public function resolve(Request $request): array
+    private function resolve(Request $request): array
     {
         $normalized = $this->normalizeIntegers(
             $request->query->all()
         );
 
-        return (new OptionsResolver())
-            ->setDefault('start', 0)
-            ->setAllowedTypes('start', 'int')
-            ->setDefault('hello', null)
-            ->setAllowedTypes('hello', ['null', 'int', 'string'])
-            ->resolve($normalized);
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+
+        return $resolver->resolve($normalized);
     }
 
-    public function normalizeIntegers(array $parameters): array
+    private function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefault('start', 0)
+            ->setAllowedTypes('start', 'int')
+            ->setDefault('hello', null)
+            ->setAllowedTypes('hello', ['null', 'int', 'string']);
+    }
+
+    private function normalizeIntegers(array $parameters): array
     {
         $normalized = [];
 
