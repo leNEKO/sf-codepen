@@ -1,3 +1,6 @@
+### custom
+.env
+.vscode
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -8,8 +11,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-### custom
-.env
 ###> symfony/phpunit-bridge ###
 .phpunit
 /phpunit.xml
