@@ -29,6 +29,7 @@ class MyController
             'Content-Type',
             sprintf('application/%s', $format)
         );
+
         // $response->headers->set(
         //     'Content-Disposition',
         //     sprintf('attachment; filename="output.%s"', $format)
