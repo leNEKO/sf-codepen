@@ -60,6 +60,7 @@
         }
     },
     "require-dev": {
+        "symfony/phpunit-bridge": "4.2.*",
         "symfony/profiler-pack": "^1.0"
     }
 }
