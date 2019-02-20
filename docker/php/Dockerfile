@@ -14,7 +14,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && mv composer /usr/local/bin/composer
 
-
 WORKDIR /var/www/symfony
 
 RUN PATH=$PATH:/var/www/symfony/vendor/bin:bin
