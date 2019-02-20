@@ -12,6 +12,7 @@
         "symfony/framework-bundle": "4.2.*",
         "symfony/http-foundation": "4.2.*",
         "symfony/options-resolver": "4.2.*",
+        "symfony/serializer-pack": "^1.0",
         "symfony/yaml": "4.2.*"
     },
     "config": {

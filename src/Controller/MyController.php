@@ -3,22 +3,39 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 // a solution to validate
 class MyController
 {
     /**
-     * @Route("/", name="home", methods={"GET"})
+     * @Route("/{format}", name="home", methods={"GET"})
      */
-    public function show(Request $request): JsonResponse
+    public function show(
+        string $format = 'json',
+        Request $request,
+        SerializerInterface $serializer
+    ): Response
     {
         $data = $this->resolve($request);
 
-        return new JsonResponse($data);
+        $response = new Response(
+            $serializer->serialize($data, $format)
+        );
+        $response->headers->set(
+            'Content-Type',
+            sprintf('application/%s', $format)
+        );
+        // $response->headers->set(
+        //     'Content-Disposition',
+        //     sprintf('attachment; filename="output.%s"', $format)
+        // );
+
+        return $response;
     }
 
     private function resolve(Request $request): array
