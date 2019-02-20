@@ -1,4 +1,4 @@
-# sf-codepen
+# Symfony Codepen
 
 My Symfony 4 App codepen in docker container
 
@@ -8,4 +8,4 @@ My Symfony 4 App codepen in docker container
 4. run docker `$ docker-compose up -d`
 5. install composer required libraries `$ docker-compose exec php composer install`
 6. ???
-7. profit
+7. ![image](https://i1.sndcdn.com/avatars-000304779352-6cj42q-t500x500.jpg)
