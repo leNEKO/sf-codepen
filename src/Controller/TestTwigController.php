@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class OtherController extends AbstractController
+class TestTwigController extends AbstractController
 {
     /**
      * @Route("/hello/{name}")
