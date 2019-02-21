@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-class MyController
+class TestOptionController
 {
     /**
      * @Route("/my/{format}", name="home", methods={"GET"})
