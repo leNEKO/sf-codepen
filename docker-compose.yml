@@ -12,7 +12,7 @@ services:
       context: .
       dockerfile: docker/php/Dockerfile
     restart: on-failure
-    user: ${LOCAL_USER}
+    #user: ${LOCAL_USER}
     volumes:
       - .:/var/www/symfony
       - /tmp:/tmp
