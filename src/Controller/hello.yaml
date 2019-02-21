@@ -1,0 +1,11 @@
+hello:
+  - world: [ceci, cela]
+  - machin:
+    patin:
+      - a
+      - b
+      - c
+    couffin:
+      - 1
+      - 2
+      - 3

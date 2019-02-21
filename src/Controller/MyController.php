@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class MyController
 {
     /**
-     * @Route("/{format}", name="home", methods={"GET"})
+     * @Route("/my/{format}", name="home", methods={"GET"})
      */
     public function show(
         string $format = 'json',

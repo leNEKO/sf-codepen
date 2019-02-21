@@ -1,6 +1,5 @@
 ### custom
 .env
-.vscode
 
 ###> symfony/framework-bundle ###
 /.env.local
