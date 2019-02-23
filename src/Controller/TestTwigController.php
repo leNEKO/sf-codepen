@@ -12,10 +12,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestTwigController extends AbstractController
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/{name}")
      */
     public function index(
-        string $name,
+        string $name = "world",
         LoggerInterface $logger,
         GreetingGenerator $generator
     ): Response
