@@ -4,8 +4,9 @@ services:
     image: mysql:latest
     restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      TZ: "${TZ}"
 
   php:
     build:
@@ -38,6 +39,8 @@ services:
     image: wodby/webgrind
     restart: on-failure
     user: ${LOCAL_USER}
+    environment:
+      - TZ="${TZ}"
     volumes:
       - /tmp:/tmp
       - .:/var/www/symfony

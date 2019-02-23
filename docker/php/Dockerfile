@@ -8,9 +8,16 @@ RUN pecl install apcu \
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
 
+RUN docker-php-ext-enable opcache
+
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 ADD ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/
+ADD ./docker/php/opcache.ini /usr/local/etc/php/conf.d/
+
+# Timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN printf '[PHP]\ndate.timezone = "%s"\n' "$TZ" > /usr/local/etc/php/conf.d/tzone.ini
 
 WORKDIR /var/www/symfony
 
