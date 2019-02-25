@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Service\CsvService;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,7 +16,7 @@ class CsvController
     public function output(int $qty = 1000): StreamedResponse
     {
         if($qty >= self::MAX){
-            throw new OutOfBoundsException(sprintf(
+            throw new \Exception(sprintf(
                 'Excel/LibreOffice cannot read more than %s lines per csv file',
                 self::MAX
             ));
