@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Greeting;
+namespace App\Service;
 
 use Psr\Log\LoggerInterface;
 use Twig\Extension\AbstractExtension;

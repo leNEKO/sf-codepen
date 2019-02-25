@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Greeting\GreetingGenerator;
+use App\Service\GreetingGenerator;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestTwigController extends AbstractController
+class TwigController extends AbstractController
 {
     /**
      * @Route("/{name}")

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Twig;
 
-use App\Greeting\GreetingGenerator;
+use App\Service\GreetingGenerator;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
