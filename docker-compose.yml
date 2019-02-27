@@ -46,3 +46,6 @@ services:
       - .:/var/www/symfony
     ports:
       - ${WEBGRIND_PORT}:8080
+
+volumes:
+  mysql:
