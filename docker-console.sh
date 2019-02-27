@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./docker-run bin/console $@
+./docker-exec.sh bin/console $@
