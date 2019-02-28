@@ -15,11 +15,13 @@ class CsvController
      */
     public function output(int $qty = 1000): StreamedResponse
     {
-        if($qty >= self::MAX){
-            throw new \Exception(sprintf(
-                'Excel/LibreOffice cannot read more than %s lines per csv file',
-                self::MAX
-            ));
+        if($qty >= self::MAX) {
+            throw new \Exception(
+                sprintf(
+                    'Excel/LibreOffice cannot read more than %s lines per csv file',
+                    self::MAX
+                )
+            );
         }
 
         // no limit
@@ -35,13 +37,15 @@ class CsvController
         );
 
         // do the stuff line by line
-        $callback = function () use ($qty){
+        $callback = function () use ($qty) {
             $fh = fopen('php://output', 'r+');
             fputcsv($fh, ['key', 'value']);
-            for($i = 0; $i <= $qty; $i++)
+
+            for($i = 0; $i < $qty; $i++)
             {
                 fputcsv($fh, [$i, $qty - $i]);
             }
+
             fclose($fh);
         };
 

@@ -29,14 +29,16 @@ class YamlController extends AbstractController
         $title = $path;
         $body = __DIR__;
 
-        return $this->render('home.html.twig',[
+        return $this->render(
+            'home.html.twig', [
             'title' => $title,
             'body' => $body,
-        ]);
+            ]
+        );
     }
 }
 
 
-if(!debug_backtrace()){
+if(!debug_backtrace()) {
     new TestYamController();
 }

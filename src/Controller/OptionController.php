@@ -18,8 +18,7 @@ class OptionController
         string $format = 'json',
         Request $request,
         SerializerInterface $serializer
-    ): Response
-    {
+    ): Response {
         $data = $this->resolve($request);
 
         $response = new Response(
@@ -47,10 +46,12 @@ class OptionController
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'start' => 0,
             'hello' => null,
-        ]);
+            ]
+        );
 
         $resolver
             ->setAllowedTypes('start', 'int')
