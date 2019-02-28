@@ -35,6 +35,7 @@ class TestSerializer
     }
 }
 
+// hello world
 if (!debug_backtrace()) {
     (new TestSerializer())->main();
 }
