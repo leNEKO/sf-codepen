@@ -1,16 +1,12 @@
 <?php
+
 namespace App\Codepen;
 
 if (!debug_backtrace()) {
     include '../../vendor/autoload.php';
 }
 
-
-
-
-        use Symfony\Component\Serializer\Encoder\JsonDecode;
-
-
+use Symfony\Component\Serializer\Encoder\JsonDecode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 class TestSerializer
@@ -24,8 +20,9 @@ class TestSerializer
             $content = file_get_contents($path);
             try {
                 $result = $jsonDecoder->decode($content, JsonEncoder::FORMAT);
+
                 return $result;
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 return sprintf(
                     'invalid json file: %s',
                     $path
@@ -38,6 +35,6 @@ class TestSerializer
     }
 }
 
-if (!\debug_backtrace()) {
-    (new testSerialize())->main();
+if (!debug_backtrace()) {
+    (new TestSerializer())->main();
 }
