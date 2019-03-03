@@ -6,17 +6,21 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
-      TZ: "${TZ}"
+      TZ: ${TZ}
 
   php:
     build:
       context: .
       dockerfile: docker/php/Dockerfile
+      args:
+        TZ: ${TZ}
+        LOCAL_USER: ${LOCAL_USER}
     restart: on-failure
     user: ${LOCAL_USER}
     volumes:
       - .:/var/www/symfony
-      - /tmp:/tmp
+      - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:ro
+      - tmp:/tmp/xdebug
 
   nginx:
     image: nginx:1.15.3-alpine
@@ -42,12 +46,14 @@ services:
     restart: on-failure
     user: ${LOCAL_USER}
     environment:
-      - TZ="${TZ}"
+      TZ: ${TZ}
+      WEBGRIND_DEFAULT_TIMEZONE: ${TZ}
     volumes:
-      - /tmp:/tmp
+      - tmp:/tmp
       - .:/var/www/symfony
     ports:
       - ${WEBGRIND_PORT}:8080
 
 volumes:
+  tmp:
   mysql:
